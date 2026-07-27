@@ -253,8 +253,8 @@ export const TIMELINE_ITEMS: TimelineItem[] = [
     type: "leadership",
     title: "Cultural Coordinator",
     organization: "Collegiate Student Council",
-    date: "2024 – 2025",
-    description: "Led and managed campus cultural initiatives, organized inter-collegiate technical & creative festivals, and directed student event operations.",
+    date: "2023 – Present",
+    description: "Leading and managing campus cultural initiatives, organizing inter-collegiate technical & creative festivals, and directing student event operations.",
     badge: "Student Leadership ✨",
     highlight: true
   },

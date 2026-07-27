@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { GlitchHeading } from "@/components/ui/GlitchHeading";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { PERSONAL_INFO } from "@/data/portfolioData";
@@ -37,7 +36,6 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
     if (!formState.email || !formState.message) return;
 
     setIsSubmitting(true);
-    // Simulate Formspree AJAX post
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
@@ -50,7 +48,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
     <section id="contact" className="py-20 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
       <GlitchHeading
         index="06"
-        subtitle="INITIATE COMMUNICATIONS"
+        subtitle="GET IN TOUCH"
         title="Contact & Resume"
       />
 
@@ -68,12 +66,8 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
               <span className="text-lime-400">ONLINE</span>
             </div>
 
-            <p className="text-slate-300 text-sm leading-relaxed font-sans">
-              Looking to deploy high-performance computer vision pipelines, local LLM architectures, or custom AI agents? Let&apos;s collaborate.
-            </p>
-
-            {/* Resume Button */}
-            <div className="pt-2">
+            {/* Resume Action */}
+            <div>
               <button
                 onClick={onOpenResume}
                 className="w-full flex items-center justify-center gap-3 px-5 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-mono-code font-bold text-sm shadow-xl shadow-blue-600/30 hover:shadow-blue-500/50 transition-all border border-blue-400/40"
@@ -83,8 +77,8 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
               </button>
             </div>
 
-            {/* Direct Copy Console List */}
-            <div className="space-y-3 font-mono-code pt-2">
+            {/* Clean Direct Copy Action List */}
+            <div className="space-y-3 font-mono-code">
               {/* Email */}
               <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800/80 flex items-center justify-between group hover:border-blue-500/40 transition-colors">
                 <div className="flex items-center gap-3 overflow-hidden">
@@ -107,47 +101,39 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
               </div>
 
               {/* GitHub */}
-              <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800/80 flex items-center justify-between group hover:border-blue-500/40 transition-colors">
+              <a
+                href={PERSONAL_INFO.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-xl bg-slate-900/90 border border-slate-800/80 flex items-center justify-between group hover:border-blue-500/40 transition-colors"
+              >
                 <div className="flex items-center gap-3 overflow-hidden">
                   <GithubIcon className="w-4 h-4 text-slate-200 shrink-0" />
                   <span className="text-xs text-slate-200 truncate">
                     github.com/ashurajs552-droid
                   </span>
                 </div>
-                <a
-                  href={PERSONAL_INFO.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white shrink-0"
-                  title="Open GitHub"
-                >
-                  <Copy className="w-4 h-4 opacity-0 group-hover:opacity-100" />
-                </a>
-              </div>
+              </a>
 
               {/* LinkedIn */}
-              <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800/80 flex items-center justify-between group hover:border-blue-500/40 transition-colors">
+              <a
+                href={PERSONAL_INFO.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-xl bg-slate-900/90 border border-slate-800/80 flex items-center justify-between group hover:border-blue-500/40 transition-colors"
+              >
                 <div className="flex items-center gap-3 overflow-hidden">
                   <LinkedinIcon className="w-4 h-4 text-blue-400 shrink-0" />
                   <span className="text-xs text-slate-200 truncate">
                     linkedin.com/in/aashu-raj-s
                   </span>
                 </div>
-                <a
-                  href={PERSONAL_INFO.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white shrink-0"
-                  title="Open LinkedIn"
-                >
-                  <Copy className="w-4 h-4 opacity-0 group-hover:opacity-100" />
-                </a>
-              </div>
+              </a>
             </div>
           </SpotlightCard>
         </div>
 
-        {/* Right Formspree Form Box */}
+        {/* Right Message Box */}
         <div className="lg:col-span-7">
           <SpotlightCard
             spotlightColor="rgba(132, 204, 22, 0.15)"
@@ -155,10 +141,10 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
           >
             <div className="flex items-center justify-between pb-4 mb-6 border-b border-slate-800 font-mono-code">
               <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">
-                TRANSMIT MESSAGE (FORMSPREE ENDPOINT)
+                SEND MESSAGE
               </span>
               <span className="text-lime-400 text-xs flex items-center gap-1">
-                <Sparkles className="w-3.5 h-3.5" /> SECURE_SSL
+                <Sparkles className="w-3.5 h-3.5" /> SECURE
               </span>
             </div>
 
@@ -176,7 +162,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
               <form onSubmit={handleSubmit} className="space-y-5 font-mono-code">
                 <div>
                   <label className="block text-xs text-slate-400 uppercase mb-1.5">
-                    // Your Name
+                    Your Name
                   </label>
                   <input
                     type="text"
@@ -190,7 +176,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
 
                 <div>
                   <label className="block text-xs text-slate-400 uppercase mb-1.5">
-                    // Email Address
+                    Email Address
                   </label>
                   <input
                     type="email"
@@ -204,14 +190,14 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
 
                 <div>
                   <label className="block text-xs text-slate-400 uppercase mb-1.5">
-                    // Message / Project Specs
+                    Message
                   </label>
                   <textarea
                     required
                     rows={4}
                     value={formState.message}
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                    placeholder="Describe your project, engineering role, or technical requirements..."
+                    placeholder="Write your message here..."
                     className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 transition-colors resize-none"
                   />
                 </div>
@@ -222,11 +208,11 @@ export const Contact: React.FC<ContactProps> = ({ onOpenResume }) => {
                   className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-xl shadow-blue-600/30 transition-all border border-blue-400/40 disabled:opacity-50"
                 >
                   {isSubmitting ? (
-                    <span>TRANSMITTING...</span>
+                    <span>SENDING...</span>
                   ) : (
                     <>
                       <Send className="w-4 h-4" />
-                      <span>Send Signal</span>
+                      <span>Send Message</span>
                     </>
                   )}
                 </button>
